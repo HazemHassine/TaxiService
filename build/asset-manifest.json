@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e623d075.css",
+    "main.js": "/static/js/main.bd14d543.js",
+    "static/js/787.2b7e62db.chunk.js": "/static/js/787.2b7e62db.chunk.js",
+    "static/media/mockup_phone.png": "/static/media/mockup_phone.c461a19b199622bdc338.png",
+    "static/media/waveybg.png": "/static/media/waveybg.d06e7618573c7485b574.png",
+    "static/media/fiat-logo.png": "/static/media/fiat-logo.ade6fb44ee5401f509a3.png",
+    "static/media/taxi-image.png": "/static/media/taxi-image.db7534a651854cc17b11.png",
+    "static/media/FeaturesBackGround.jpg": "/static/media/FeaturesBackGround.edd2d525a2428b38dabb.jpg",
+    "static/media/vw-logo.png": "/static/media/vw-logo.ebb9b2fe45786a877b95.png",
+    "static/media/ford-logo.png": "/static/media/ford-logo.862b3bd67fc7b9bf9ed7.png",
+    "static/media/nissan-logo.png": "/static/media/nissan-logo.ac6266fe593d4a18bb9b.png",
+    "static/media/bmw-logo.png": "/static/media/bmw-logo.4cb148c26a195ecaa53c.png",
+    "static/media/mercedes-logo.png": "/static/media/mercedes-logo.510a8d796a8a8c119491.png",
+    "static/media/audi-logo.png": "/static/media/audi-logo.798b2b23fa3bfbfe36dc.png",
+    "static/media/hyundai-logo.png": "/static/media/hyundai-logo.30c63b65b56e15a94d60.png",
+    "static/media/TaxiAlone.png": "/static/media/TaxiAlone.a045ea93499586622602.png",
+    "static/media/taxi-booking.svg": "/static/media/taxi-booking.fda4167555bc2520867af336ffcdbfdc.svg",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.e623d075.css.map": "/static/css/main.e623d075.css.map",
+    "main.bd14d543.js.map": "/static/js/main.bd14d543.js.map",
+    "787.2b7e62db.chunk.js.map": "/static/js/787.2b7e62db.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e623d075.css",
+    "static/js/main.bd14d543.js"
+  ]
+}
