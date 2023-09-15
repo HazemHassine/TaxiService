@@ -1,9 +1,29 @@
-const tiers = {
-    // tiers per distance per meters
-    first: { distance: 5000, price_per_meter: 0.06 },
-    second: { distance: 10000, price_per_meter: 0.05 },
-    third: { distance: 15000, price_per_meter: 0.04 },
-    fourth: { distance: 20000, price_per_meter: 0.03 },
-    fifth: { distance: 25000, price_per_meter: 0.02 },
-    most: { distance: 9999999, price_per_meter: 0.01 },
+const nodemailer = require("nodemailer");
+
+const sendEmail = async (email, subject, message) => {
+	try {
+		const transporter = nodemailer.createTransport({
+			host: process.env.EMAIL_HOST,
+			port: process.env.EMAIL_PORT,
+			service: process.env.EMAIL_SERVICE,
+			secure: Boolean(process.env.EMAIL_SECURE),
+			auth: {
+				user: process.env.EMAIL_USER,
+				pass: process.env.EMAIL_PASSWORD,
+			},
+		});
+
+		await transporter.sendMail({
+			from: process.env.From_EMAIL,
+			to: email,
+			subject: subject,
+			text: message,
+		});
+		console.log("Email sent");
+	} catch (error) {
+		console.log("Email not sent");
+		console.log(error);
+	}
 };
+
+export default sendEmail;

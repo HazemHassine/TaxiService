@@ -26,7 +26,6 @@ const tiers = {
   most: { distance: 9999999, price_per_meter: 0.01 },
 };
 
-
 function MapContainer(props) {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [activeMarker, setActiveMarker] = useState(null);

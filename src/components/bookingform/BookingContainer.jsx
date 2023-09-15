@@ -4,6 +4,7 @@ import { GeoAlt, TrashFill } from "react-bootstrap-icons";
 import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
 import "./form.css";
 import MapContainer from "./MapContainer";
+import emailjs from "@emailjs/browser";
 
 const libraries = ["places"];
 
@@ -25,6 +26,22 @@ function BookingContainer() {
   const [markers, setMarkers] = useState(null);
   const [price, setPrice] = useState(null);
   const [tier, setTier] = useState(null);
+  const [results, setResults] = useState(null);
+  const [firstAndLastName, setFirstAndLastName] = useState("");
+  const [number, setNumber] = useState("");
+  const [checkedLocations, setCheckedLocations] = useState({
+    locationOne: "",
+    locationTwo: "",
+  });
+
+  // console.log(
+  //   "From ReRenders locationOne",
+  //   locationOne,
+  //   "locationTwo",
+  //   locationTwo,
+  //   "checkedLocations",
+  //   checkedLocations
+  // );
 
   useEffect(() => {
     // Define a media query for small screens (you can customize this)
@@ -72,17 +89,37 @@ function BookingContainer() {
       }
     }
     setPrice(price_);
+    return price_;
   }
 
-  function book() {
-    console.log({
-      pickUp: locationOne,
-      dropOff: locationTwo,
-      duration: duration,
-      distance: distance,
-      distanceInMeters: distanceInMeters,
-      price: price,
-    });
+  async function book() {
+    const result_booking = await showResponse();
+    const message = {
+      from_name: firstAndLastName,
+      message: JSON.stringify(
+        {
+          name: firstAndLastName,
+          phone_number: number,
+          time: time,
+          pickUp: locationOne,
+          dropOff: locationTwo,
+          duration: result_booking.duration,
+          distance: result_booking.distance,
+          distanceInMeters: result_booking.distanceInMeters,
+          price: result_booking.price.toFixed(2),
+        },
+        null
+      ),
+    };
+
+    // console.log(message);
+
+    await emailjs.send(
+      process.env.REACT_APP_SERVICE_ID,
+      process.env.REACT_APP_TEMPLATE_ID,
+      message,
+      process.env.REACT_APP_PUBLIC_KEY
+    );
   }
 
   const toggleMap = (e) => {
@@ -129,6 +166,7 @@ function BookingContainer() {
 
   async function showResponse() {
     let GeoCodedAdresses = await geoCodeAdresses();
+
     if (GeoCodedAdresses.status === "ERROR_GEOCODER_DEV_ADRESS_ORIGIN") {
       setErrorInputOne(true);
     } else if (
@@ -152,26 +190,61 @@ function BookingContainer() {
         setDistanceInMeters(results.routes[0].legs[0].distance.value);
         setDirectionsResult(false);
         setDirectionsError(false);
-        calculatePriceAndTier(results.routes[0].legs[0].distance.value);
+        let price_ = calculatePriceAndTier(
+          results.routes[0].legs[0].distance.value
+        );
         // setDirectionsResponse(null);
         setDirectionsResponse(results);
+        // console.log(
+        //   "From showResponse locationOne",
+        //   locationOne,
+        //   "locationTwo",
+        //   locationTwo,
+        //   "checkedLocations",
+        //   checkedLocations
+        // );
+        setCheckedLocations({
+          locationOne: locationOne,
+          locationTwo: locationTwo,
+        });
+        let duration_ = results.routes[0].legs[0].duration.text;
+        let distance_ = results.routes[0].legs[0].distance.text;
+        let distanceInMeters_ = results.routes[0].legs[0].distance.value;
+
         if (!isSmallScreen) {
           if (!mapState) {
             setMapState(true);
             setDirectionsResult(false);
           }
         }
+        const res = {
+          price: price_,
+          duration: duration_,
+          distance: distance_,
+          distanceInMeters: distanceInMeters_,
+        };
+        setResults(res);
+        return res;
       } catch (error) {
         console.log("Error happened while finding directions");
         setDirectionsResult(true);
       }
     }
   }
+  function checkInputsAndShowResponseMaybe() {
+    if (
+      checkedLocations.locationOne != locationOne ||
+      checkedLocations.locationTwo != locationTwo
+    ) {
+      showResponse();
+    } else {
+      return;
+    }
+  }
+
   function directionsErrorFunction() {
     setDirectionsResult(false);
     setDirectionsError(true);
-    // setErrorInputOne(true);
-    // setErrorInputTwo(true);
     return <p>Error calculating route, please fix the addresses</p>;
   }
   if (!isLoaded) {
@@ -222,6 +295,40 @@ function BookingContainer() {
         <div className="px-4 flex gap-4 flex-wrap items-center justify-around">
           <div className="min-w-full md:min-w-[20rem] md:max-w-[25rem]">
             <Typography variant="h5" className="pl-3 pb-2">
+              First and Last name
+            </Typography>
+            <div className="group duration-500 ease-in-out ring-white hover:ring-yellow-700 md:hover:ring-2 h-full flex justify-between items-center px-4 bg-white drop-shadow-md rounded-xl">
+              <input
+                id="name"
+                placeholder="First and Last name"
+                className={`peer duration-500 ease-in-out group-hover:ring-b-1 group-hover:ring-yellow-700 w-full md:w-[125%] h-[2rem] my-4 active:outline-none outline-none focus:outline-none p-0`}
+                type="text"
+                value={firstAndLastName}
+                onChange={(e) => {
+                  setFirstAndLastName(e.target.value);
+                }}
+              />
+            </div>
+          </div>
+          <div className="min-w-full md:min-w-[20rem] md:max-w-[25rem]">
+            <Typography variant="h5" className="pl-3 pb-2">
+              Phone Number
+            </Typography>
+            <div className="group duration-500 ease-in-out ring-white hover:ring-yellow-700 md:hover:ring-2 h-full flex justify-between items-center px-4 bg-white drop-shadow-md rounded-xl">
+              <input
+                id="phone"
+                placeholder="Phone number"
+                className={`peer duration-500 ease-in-out group-hover:ring-b-1 group-hover:ring-yellow-700 w-full md:w-[125%] h-[2rem] my-4 active:outline-none outline-none focus:outline-none p-0`}
+                type="text"
+                value={number}
+                onChange={(e) => {
+                  setNumber(e.target.value);
+                }}
+              />
+            </div>
+          </div>
+          <div className="min-w-full md:min-w-[20rem] md:max-w-[25rem]">
+            <Typography variant="h5" className="pl-3 pb-2">
               Pick up Location
             </Typography>
             <Typography variant="p" className="text-red-700">
@@ -238,8 +345,9 @@ function BookingContainer() {
                   ? "ring-2 ring-red-400 hover:ring-red-700"
                   : "ring-white hover:ring-yellow-700"
               } md:hover:ring-2 h-full flex justify-between items-center px-4 bg-white drop-shadow-md rounded-xl`}
-              onMouseLeave={(e) => {
+              onFocusOut={(e) => {
                 setLocationOne(document.querySelector("#firstInput").value);
+                checkInputsAndShowResponseMaybe();
               }}
             >
               <StandaloneSearchBox
@@ -285,6 +393,7 @@ function BookingContainer() {
                   ? "ring-2 ring-red-400 hover:ring-red-700"
                   : "ring-white hover:ring-yellow-700"
               } md:hover:ring-2 h-full flex justify-between items-center px-4 bg-white drop-shadow-md rounded-xl`}
+              onFocusOut={checkInputsAndShowResponseMaybe()}
             >
               <StandaloneSearchBox
                 onPlacesChanged={() =>
@@ -343,6 +452,7 @@ function BookingContainer() {
             </Typography>
             <div className="flex gap-4 w-full justify-evenly">
               <button
+              className="md:block hidden"
                 onClick={async (e) => {
                   e.preventDefault();
                   setLocationOne(document.querySelector("#firstInput").value);
@@ -355,9 +465,9 @@ function BookingContainer() {
               <button
                 className="hover:bg-black text-black  hover:text-white duration-500 ease-in-out bg-yellow-700 rounded-lg py-4 w-3/4 drop-shadow-2xl"
                 type="submit"
-                onClick={(e) => {
+                onClick={async (e) => {
                   e.preventDefault();
-                  book();
+                  await book();
                 }}
               >
                 <Typography className="font-bold" variant="h5">
