@@ -2,7 +2,11 @@ import { Typography } from "@material-tailwind/react";
 import React from "react";
 function FeatureCard(props) {
   return (
-    <div className={`${props.small? "": "hover:-translate-y-10"} duration-500 ease-in-out group flex flex-col bg-white p-[25px_20px] rounded-3xl w-[18rem] items-center`}>
+    <div
+      className={`${
+        props.small ? "" : "hover:-translate-y-10"
+      } duration-500 ease-in-out group flex flex-col bg-white p-[25px_20px] rounded-3xl w-[18rem] items-center`}
+    >
       <div className="p-[20px] w-[100px] h-[100px] bg-yellow-700 rounded-full border-black border-[5px]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -55,12 +59,12 @@ function FeatureCard(props) {
           </g>
         </svg>
       </div>
-      <Typography variant="h4" className="mt-4">Safety Guarantee</Typography>
+      <Typography variant="h4" className="mt-4">
+        {props.title}
+      </Typography>
       <Typography className="text-center mt-6 mb-6" color="gray">
-        It is a long established fact that a reader will be distracted by the
-        readable content of a page when looking at its layout point of using is
-        that it has normal distribution of letter
-        </Typography>
+        {props.content}
+      </Typography>
     </div>
   );
 }

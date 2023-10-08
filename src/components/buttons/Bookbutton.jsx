@@ -22,7 +22,7 @@ function BookButton(props) {
       onMouseLeave={handleHoverEnd}
       >
         <TaxiFrontFill className='mr-2'/>
-        <p className='font-semibold'>Book a Taxi</p>
+        <p className='font-semibold'>Réserver un Taxi</p>
       </div>
     </div>
   )

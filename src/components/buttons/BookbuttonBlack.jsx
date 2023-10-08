@@ -20,7 +20,7 @@ function BookButtonBlack(props) {
         onMouseLeave={handleHoverEnd}
       >
         <TaxiFrontFill color={hovered ? `black` : `white`} className="mr-2" />
-        <p className="font-semibold">Book a Taxi</p>
+        <p className="font-semibold">Réserver un Taxi</p>
       </div>
 
   );

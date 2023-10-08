@@ -274,7 +274,7 @@ function BookingContainer() {
           variant="h2"
           className="mb-4 w-fit mx-4 border-b-4 border-r-0 border-l-0 border-t-0 border-yellow-700"
         >
-          Book Your Ride
+          Réserver votre Taxi
         </Typography>
       </div>
       {mapState && (
@@ -312,12 +312,12 @@ function BookingContainer() {
           </div>
           <div className="min-w-full md:min-w-[20rem] md:max-w-[25rem]">
             <Typography variant="h5" className="pl-3 pb-2">
-              Phone Number
+              Numéro de téléphone
             </Typography>
             <div className="group duration-500 ease-in-out ring-white hover:ring-yellow-700 md:hover:ring-2 h-full flex justify-between items-center px-4 bg-white drop-shadow-md rounded-xl">
               <input
                 id="phone"
-                placeholder="Phone number"
+                placeholder="Numéro de téléphone"
                 className={`peer duration-500 ease-in-out group-hover:ring-b-1 group-hover:ring-yellow-700 w-full md:w-[125%] h-[2rem] my-4 active:outline-none outline-none focus:outline-none p-0`}
                 type="text"
                 value={number}
@@ -329,15 +329,15 @@ function BookingContainer() {
           </div>
           <div className="min-w-full md:min-w-[20rem] md:max-w-[25rem]">
             <Typography variant="h5" className="pl-3 pb-2">
-              Pick up Location
+              Adresse de prise en charge
             </Typography>
             <Typography variant="p" className="text-red-700">
               {errorInputOne
-                ? "unabled to locate pick up adress, change it or be more specific"
+                ? "impossible de localiser l'adresse de prise en charge, modife la ou soit plus précis"
                 : ""}
             </Typography>
             <Typography variant="p" className="text-red-700">
-              {directionsError ? "Directions Error fix the endpoints" : ""}
+              {directionsError ? "Problème du route, changer les addresses" : ""}
             </Typography>
             <div
               className={`group duration-500 ease-in-out ${
@@ -357,7 +357,7 @@ function BookingContainer() {
               >
                 <input
                   id="firstInput"
-                  placeholder="Write Something Here !!"
+                  placeholder="Addresse de prise en charge"
                   className={`peer duration-500 ease-in-out group-hover:ring-b-1 group-hover:ring-yellow-700 w-full md:w-[125%] h-[2rem] my-4 active:outline-none outline-none focus:outline-none p-0`}
                   type="text"
                   // defaultValue={locationOne}
@@ -377,15 +377,15 @@ function BookingContainer() {
           </div>
           <div className="min-w-full md:min-w-[20rem] md:max-w-[25rem]">
             <Typography variant="h5" className="pl-3 pb-2">
-              Drop Off Location
+              Destination
             </Typography>
             <Typography variant="p" className="text-red-700">
               {errorInputTwo
-                ? "unabled to locate drop off address, change it or be more specific"
+                ? "impossible de localiser l'adresse de prise en charge, modife la ou soit plus précis"
                 : ""}
             </Typography>
             <Typography variant="p" className="text-red-700">
-              {directionsError ? "Directions Error fix the endpoints" : ""}
+              {directionsError ? "Problème du route, changer les addresses" : ""}
             </Typography>
             <div
               className={`group duration-500 ease-in-out ${
@@ -401,7 +401,7 @@ function BookingContainer() {
                 }
               >
                 <input
-                  placeholder="Write Something Here !!"
+                  placeholder="Destination"
                   id="secondInput"
                   className="peer duration-500 ease-in-out group-hover:ring-b-1 group-hover:ring-yellow-700 ring-gray-400 w-full md:w-[125%] h-[2rem] my-4 active:outline-none outline-none focus:outline-none p-0"
                   type="text"
@@ -422,7 +422,7 @@ function BookingContainer() {
           </div>
           <div className="min-w-full md:min-w-[15rem] md:max-w-[25rem]">
             <Typography variant="h5" className="pl-3 pb-2">
-              Pick up Date
+              Date et heure de la course
             </Typography>
             <div className="group duration-500 ease-in-out hover:ring-yellow-700 ring-white md:hover:ring-2 h-full min-w-full flex justify-center md:px-0 px-4 items-center py-4 bg-white drop-shadow-md rounded-xl">
               <input
@@ -439,20 +439,20 @@ function BookingContainer() {
                 variant="p"
                 className="mx-4 font-semibold text-xl border-b-4 border-r-0 border-l-0 border-t-0 border-yellow-700"
               >
-                Estimated Distance: {distance}
+                Distance estimée: {distance}
                 <br />
-                Estimated Duration: {duration}
+                Durée estimée: {duration}
                 <br />
-                Estimated Price: {price.toFixed(2)}$
+                Prix estimée: {price.toFixed(2)}$
               </Typography>
             )}
             <Typography variant="p" className="text-red-700">
               {directionsResult ? directionsErrorFunction() : null}
-              {directionsError ? "Finding directions failed" : null}
+              {directionsError ? "Echec de la recherche de la destination" : null}
             </Typography>
             <div className="flex gap-4 w-full justify-evenly">
               <button
-              className="md:block hidden"
+                className="md:block hidden"
                 onClick={async (e) => {
                   e.preventDefault();
                   setLocationOne(document.querySelector("#firstInput").value);
@@ -471,7 +471,7 @@ function BookingContainer() {
                 }}
               >
                 <Typography className="font-bold" variant="h5">
-                  Book Now
+                  Réserver Maintenant
                 </Typography>
               </button>
             </div>

@@ -12,7 +12,7 @@ function AboutUsTextContainer() {
               variant="h6"
               className="text-yellow-700 tracking-[0.25rem] font-[600]"
             >
-              About Us
+              Nos services
             </Typography>
             <div className="bottom-0.5 left-0 bg-yellow-900 opacity-20 absolute w-[100%] -z-[10] h-[0.7rem]"></div>
           </div>

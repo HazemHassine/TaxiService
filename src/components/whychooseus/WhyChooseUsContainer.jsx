@@ -49,7 +49,7 @@ function WhyChooseUsContainer() {
       className="relative md:p-[80px] p-0 w-full flex justify-center items-center flex-row bg-black"
     >
       <div className="absolute top-0 right-0 w-full h-full bg-[rgba(0,0,0,0.75)]"></div>
-      <div className="flex w-5/6 md:flex-row flex-col md:mb-0 mb-[80px]">
+      <div className="flex w-5/6 md:flex-row items-center flex-col md:mb-0 mb-[80px]">
         <div className="relative md:text-left text-center md:items-start items-center flex flex-col md:w-1/2 w-full pt-[2.75rem] mr-4 text-white">
           <div className="relative w-fit">
             <div className="bottom-1 -left-[0.2rem] bg-yellow-700 opacity-40 absolute w-[100%] h-[0.9rem]"></div>
@@ -57,19 +57,18 @@ function WhyChooseUsContainer() {
               variant="h5"
               className="relative text-white tracking-[0.25rem] font-[600] z-[1]"
             >
-              Why Choose Us
+              Pourquoi choisir <Typography variant="h3" className="inline text-yellow-700">TaxiParisien</Typography>
             </Typography>
           </div>
-          <Typography className="mt-4" variant="h2" color="white">
-            We Are Dedicated <span className="text-yellow-700">To Provide</span>{" "}
-            Quality Service
+          <Typography className="mt-4" variant="h3" color="white">
+          Nous proposons des services de <span className="text-yellow-700">Taxi</span> à Paris professionnels. Nos chauffeurs expérimentés connaissent parfaitement la ville
           </Typography>
-          <Typography className="mt-4">
+          {/* <Typography className="mt-4">
             There are many variations of passages available but the majority
             have suffered alteration in some form going to use a passage by
             injected humour randomised words which don't look even slightly
             believable.
-          </Typography>
+          </Typography> */}
           <img className="mt-[3rem] md:block hidden" src={TaxiImage} />
         </div>
         <div className="md:mt-0 mt-4 relative flex items-end md:w-7/12 w-full flex-col gap-[1rem] h-full">
@@ -111,13 +110,10 @@ function WhyChooseUsContainer() {
             </div>
             <div className="relative">
               <Typography variant="h4" className="font-semibold">
-                Our Expert Drivers
+              Sécurité garantie
               </Typography>
               <Typography className="mt-4 pr-4" variant="p" color="gray">
-                There are many variations of passages available but the majority
-                have suffered alteration in form injected humour words which
-                don't look even slightly believable. If you are going passage
-                you need there anything embar
+              Tous nos taxis sont agréés et assurés. Votre sécurité est notre priorité absolue. Nos chauffeurs sont sélectionnés rigoureusement.
               </Typography>
             </div>
           </div>
@@ -161,13 +157,10 @@ function WhyChooseUsContainer() {
             </div>
             <div className="relative">
               <Typography variant="h4" className="font-semibold">
-                Our Expert Drivers
+              Simple et abordable
               </Typography>
               <Typography className="mt-4 pr-4" variant="p" color="gray">
-                There are many variations of passages available but the majority
-                have suffered alteration in form injected humour words which
-                don't look even slightly believable. If you are going passage
-                you need there anything embar
+              Réserver un taxi avec nous est rapide, facile et abordable. Nous proposons des tarifs compétitifs sans frais cachés.
               </Typography>
             </div>
           </div>
@@ -210,13 +203,10 @@ function WhyChooseUsContainer() {
             </div>
             <div className="relative">
               <Typography variant="h4" className="font-semibold">
-                Our Expert Drivers
+              Service dédié
               </Typography>
               <Typography className="mt-4 pr-4" variant="p" color="gray">
-                There are many variations of passages available but the majority
-                have suffered alteration in form injected humour words which
-                don't look even slightly believable. If you are going passage
-                you need there anything embar
+              Nos chauffeurs courtois sont dévoués à vous offrir un service de qualité. Votre entière satisfaction est notre engagement
               </Typography>
             </div>
           </div>

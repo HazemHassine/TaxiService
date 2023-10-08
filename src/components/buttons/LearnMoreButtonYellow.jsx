@@ -19,7 +19,7 @@ function LearnMoreButtonYellow() {
           onMouseEnter={handleHover}
           onMouseLeave={handleHoverEnd}
           >
-            <p className='font-semibold'>Learn More</p>
+            <p className='font-semibold'>Plus</p>
             <ArrowRight size="20" className='md:ml-4 ml-3'/>
           </div>
         </div>

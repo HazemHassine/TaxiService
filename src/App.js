@@ -34,7 +34,7 @@ function App() {
         <CarouselContainer />
       </section>
       <section>
-        <div className="md:-translate-y-[50%] -translate-y-[20vh] flex justify-center">
+        <div className="md:-translate-y-[30%] -translate-y-[12vh] flex justify-center">
           <BookingContainer className="mx-auto" />
         </div>
       </section>
