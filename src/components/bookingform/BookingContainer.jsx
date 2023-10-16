@@ -5,6 +5,8 @@ import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
 import "./form.css";
 import MapContainer from "./MapContainer";
 import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const libraries = ["places"];
 
@@ -33,15 +35,22 @@ function BookingContainer() {
     locationOne: "",
     locationTwo: "",
   });
-
-  // console.log(
-  //   "From ReRenders locationOne",
-  //   locationOne,
-  //   "locationTwo",
-  //   locationTwo,
-  //   "checkedLocations",
-  //   checkedLocations
-  // );
+  const submit = async (e) => {
+    e.preventDefault();
+    await book();
+    notify();
+  };
+  const notify = () =>
+    toast.success("Ton requete a été envoyé en sucess", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
 
   useEffect(() => {
     // Define a media query for small screens (you can customize this)
@@ -249,7 +258,7 @@ function BookingContainer() {
   }
   if (!isLoaded) {
     return (
-      <div className="temporary-class h-fit py-4 drop-shadow-2xl w-5/6 backdrop-blur-lg bg-[rgba(256,256,256,0.7)] rounded-3xl">
+      <div className="h-fit py-4 drop-shadow-2xl w-5/6 backdrop-blur-lg bg-[rgba(256,256,256,0.7)] rounded-3xl">
         <Typography
           variant="h2"
           className="mb-4 w-fit mx-4 border-b-4 border-r-0 border-l-0 border-t-0 border-yellow-700"
@@ -268,7 +277,7 @@ function BookingContainer() {
     );
   }
   return (
-    <div className="temporary-class h-fit py-4 drop-shadow-2xl w-5/6 backdrop-blur-lg bg-[rgba(256,256,256,0.7)] rounded-3xl">
+    <div className="h-fit py-4 drop-shadow-2xl w-5/6 backdrop-blur-lg bg-[rgba(256,256,256,0.7)] rounded-3xl">
       <div className="flex justify-between items-center">
         <Typography
           variant="h2"
@@ -278,7 +287,7 @@ function BookingContainer() {
         </Typography>
       </div>
       {mapState && (
-        <div className="">
+        <div>
           <MapContainer
             toggleFunction={toggleMap}
             changeLocationOneFunction={setLocationOne}
@@ -337,7 +346,9 @@ function BookingContainer() {
                 : ""}
             </Typography>
             <Typography variant="p" className="text-red-700">
-              {directionsError ? "Problème du route, changer les addresses" : ""}
+              {directionsError
+                ? "Problème du route, changer les addresses"
+                : ""}
             </Typography>
             <div
               className={`group duration-500 ease-in-out ${
@@ -385,7 +396,9 @@ function BookingContainer() {
                 : ""}
             </Typography>
             <Typography variant="p" className="text-red-700">
-              {directionsError ? "Problème du route, changer les addresses" : ""}
+              {directionsError
+                ? "Problème du route, changer les addresses"
+                : ""}
             </Typography>
             <div
               className={`group duration-500 ease-in-out ${
@@ -448,7 +461,9 @@ function BookingContainer() {
             )}
             <Typography variant="p" className="text-red-700">
               {directionsResult ? directionsErrorFunction() : null}
-              {directionsError ? "Echec de la recherche de la destination" : null}
+              {directionsError
+                ? "Echec de la recherche de la destination"
+                : null}
             </Typography>
             <div className="flex gap-4 w-full justify-evenly">
               <button
@@ -465,10 +480,7 @@ function BookingContainer() {
               <button
                 className="hover:bg-black text-black  hover:text-white duration-500 ease-in-out bg-yellow-700 rounded-lg py-4 w-3/4 drop-shadow-2xl"
                 type="submit"
-                onClick={async (e) => {
-                  e.preventDefault();
-                  await book();
-                }}
+                onClick={submit}
               >
                 <Typography className="font-bold" variant="h5">
                   Réserver Maintenant

@@ -21,12 +21,16 @@ import ScrollToTop from './components/buttons/ScrollToTop';
 import VideoContainer from './components/video/VideoContainer';
 import FooterContainer from './components/footer/FooterContainer';
 import MockUpContainer from './components/mockup/MockUpContainer';
+import React, { useState } from "react";
+import { ToastContainer } from 'react-toastify';
+
 
 function App() {
   const images = [audi, bmw, fiat, ford, hyundai, mercedes, nissan, volkswagen];
-
   return (
     <div className='overflow-hidden'>
+      <ToastContainer />
+
       <nav className='z-[100] static md:fixed'>
         <Navbar />
       </nav>
