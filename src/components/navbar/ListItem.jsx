@@ -1,7 +1,19 @@
 import { Typography } from "@material-tailwind/react";
 import React from "react";
+import { scroller } from 'react-scroll';
 
 function ListItem(props) {
+  
+  const handleClick = () => {
+    console.log("Clicked");
+    scroller.scrollTo("bookingcontainer", {
+      duration: 500,
+      delay: 30,
+      offset: -130,
+      smooth: "easeInOutCubic",
+    })
+  };
+
   return (
     <div className="flex items-center gap-2 text-black">
       <svg

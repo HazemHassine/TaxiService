@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {ArrowRight} from 'react-bootstrap-icons';
-    
+import {TelephoneFill} from 'react-bootstrap-icons';
+
 function LearnMoreButton() {
     const [hovered, setHovered] = useState(false);
 
@@ -14,14 +14,13 @@ function LearnMoreButton() {
    
     return (
         <div>
-          <div
-          className={`relative flex justify-center items-center animation ease-in-out duration-300 hover:bg-yellow-700 hover:text-black cursor-pointer rounded-full bg-white pl-6 pr-4 py-3 bookbutton`}
-          onMouseEnter={handleHover}
-          onMouseLeave={handleHoverEnd}
+          <a
+          className={`relative flex justify-center items-center animation ease-in-out duration-300 hover:bg-black hover:text-white cursor-pointer rounded-full bg-white pl-6 pr-6 py-3`}
+          href="tel:+21629478308"
           >
-            <p className='font-semibold'>Plus</p>
-            <ArrowRight size="20" className='md:ml-4 sm:ml-3'/>
-          </div>
+            <TelephoneFill size="15" className='mr-3 md:mr-4 sm:mr-3'/>
+            <p className='font-semibold'>Réserver par téléphone</p>
+          </a>
         </div>
       )
 }

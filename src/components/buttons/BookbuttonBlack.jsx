@@ -14,14 +14,15 @@ function BookButtonBlack(props) {
   };
 
   return (
-      <div
-        className={`relative flex justify-center items-center animation ease-in-out duration-300  bg-black hover:bg-white hover:text-black text-white cursor-pointer rounded-full py-3 bookbutton`}
+      <a
+        className={`relative flex justify-center items-center animation ease-in-out duration-300  bg-black hover:bg-white hover:text-black text-white cursor-pointer rounded-full py-3 bookbutton px-4`}
         onMouseEnter={handleHover}
         onMouseLeave={handleHoverEnd}
+        href="tel:+21629478308"
       >
         <TaxiFrontFill color={hovered ? `black` : `white`} className="mr-2" />
-        <p className="font-semibold">Réserver un Taxi</p>
-      </div>
+        <p className="font-semibold">Réserver par téléphone</p>
+      </a>
 
   );
 }

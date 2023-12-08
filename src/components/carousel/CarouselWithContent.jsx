@@ -60,7 +60,7 @@ export function CarouselWithContent() {
             Bienvenue sur TaxiParisien, votre service de réservation de taxis de confiance à Paris. Nous vous proposons des courses en taxi fiables et abordables dans toute la région Ile-de-France. Réservez un taxi avec nous pour votre prochain déplacement.
             </Typography>
             <div className="flex md:flex-row flex-col w-5/6 items-center justify-center gap-2">
-              <BookButton />
+              <BookButton/>
               <LearnMoreButton />
             </div>
           </div>

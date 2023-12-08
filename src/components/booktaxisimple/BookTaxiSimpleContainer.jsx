@@ -2,8 +2,7 @@ import React from "react";
 // import "./booktaxisimple.css";
 import squares_image from "../../assets/images/squares.png";
 import { Typography } from "@material-tailwind/react";
-import { CaretRightFill, Headset } from "react-bootstrap-icons";
-import BookButton from "../buttons/Bookbutton";
+import { Headset } from "react-bootstrap-icons";
 import BookButtonBlack from "../buttons/BookbuttonBlack";
 
 function BookTaxiSimpleContainer() {
@@ -57,9 +56,9 @@ function BookTaxiSimpleContainer() {
                 308
               </Typography>
             </div>            
-            <div className="w-[10rem] mt-[12px]">
-              <BookButtonBlack />
-            </div>
+              <div className="mt-[12px]">
+                <BookButtonBlack />
+              </div>
           </div>
         </div>
       </div>

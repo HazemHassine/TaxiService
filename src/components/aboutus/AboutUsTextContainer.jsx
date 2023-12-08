@@ -46,9 +46,9 @@ function AboutUsTextContainer() {
             </div>
           </div>
         </div>
-        <div className="mt-6 w-[12rem]">
+        {/* <div className="mt-6 w-[12rem]">
           <LearnMoreButtonYellow />
-        </div>
+        </div> */}
       </div>    
   );
 }

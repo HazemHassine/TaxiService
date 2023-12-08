@@ -39,8 +39,8 @@ function RightNavbar(props) {
           </div>
           <div>
             <Typography variant="paragraph" color="gray">
-              All rights reserved{" "}
-              <span className="text-yellow-700">Mohammed Hazem Hassine</span>
+              All rights reserved to{" "}
+              <span className="text-yellow-700">TaxiParisien</span>
             </Typography>
           </div>
         </div>

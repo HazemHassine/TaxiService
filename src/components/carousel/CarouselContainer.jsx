@@ -1,10 +1,10 @@
 import React from 'react'
 import CarouselArrow from './CarouselArrow'
 import { CarouselWithContent } from './CarouselWithContent'
-function CarouselContainer() {
+function CarouselContainer({ subsubsubComponentRef }) {
   return (
     <div className='relative h-fit'>
-      <CarouselWithContent />
+      <CarouselWithContent/>
     </div>
   )
 }

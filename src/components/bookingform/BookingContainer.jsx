@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import { Typography } from "@material-tailwind/react";
 import { GeoAlt, TrashFill } from "react-bootstrap-icons";
 import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
@@ -7,10 +7,11 @@ import MapContainer from "./MapContainer";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Element } from "react-scroll";
 
 const libraries = ["places"];
 
-function BookingContainer() {
+function BookingContainer({ ref }) {
   // const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [mapState, setMapState] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -258,7 +259,7 @@ function BookingContainer() {
   }
   if (!isLoaded) {
     return (
-      <div className="h-fit py-4 drop-shadow-2xl w-5/6 backdrop-blur-lg bg-[rgba(256,256,256,0.7)] rounded-3xl">
+      <div ref={ref} className="h-fit py-4 drop-shadow-2xl w-5/6 backdrop-blur-lg bg-[rgba(256,256,256,0.7)] rounded-3xl">
         <Typography
           variant="h2"
           className="mb-4 w-fit mx-4 border-b-4 border-r-0 border-l-0 border-t-0 border-yellow-700"
@@ -277,7 +278,7 @@ function BookingContainer() {
     );
   }
   return (
-    <div className="h-fit py-4 drop-shadow-2xl w-5/6 backdrop-blur-lg bg-[rgba(256,256,256,0.7)] rounded-3xl">
+    <div ref={ref} className="h-fit py-4 drop-shadow-2xl w-5/6 backdrop-blur-lg bg-[rgba(256,256,256,0.7)] rounded-3xl">
       <div className="flex justify-between items-center">
         <Typography
           variant="h2"
@@ -351,11 +352,10 @@ function BookingContainer() {
                 : ""}
             </Typography>
             <div
-              className={`group duration-500 ease-in-out ${
-                errorInputOne || directionsError
+              className={`group duration-500 ease-in-out ${errorInputOne || directionsError
                   ? "ring-2 ring-red-400 hover:ring-red-700"
                   : "ring-white hover:ring-yellow-700"
-              } md:hover:ring-2 h-full flex justify-between items-center px-4 bg-white drop-shadow-md rounded-xl`}
+                } md:hover:ring-2 h-full flex justify-between items-center px-4 bg-white drop-shadow-md rounded-xl`}
               onFocusOut={(e) => {
                 setLocationOne(document.querySelector("#firstInput").value);
                 checkInputsAndShowResponseMaybe();
@@ -401,11 +401,10 @@ function BookingContainer() {
                 : ""}
             </Typography>
             <div
-              className={`group duration-500 ease-in-out ${
-                errorInputTwo || directionsError
+              className={`group duration-500 ease-in-out ${errorInputTwo || directionsError
                   ? "ring-2 ring-red-400 hover:ring-red-700"
                   : "ring-white hover:ring-yellow-700"
-              } md:hover:ring-2 h-full flex justify-between items-center px-4 bg-white drop-shadow-md rounded-xl`}
+                } md:hover:ring-2 h-full flex justify-between items-center px-4 bg-white drop-shadow-md rounded-xl`}
               onFocusOut={checkInputsAndShowResponseMaybe()}
             >
               <StandaloneSearchBox
@@ -456,7 +455,6 @@ function BookingContainer() {
                 <br />
                 Durée estimée: {duration}
                 <br />
-                Prix estimée: {price.toFixed(2)}$
               </Typography>
             )}
             <Typography variant="p" className="text-red-700">
@@ -494,4 +492,4 @@ function BookingContainer() {
   );
 }
 
-export default BookingContainer;
+export default forwardRef(BookingContainer);
