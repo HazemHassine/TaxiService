@@ -40,12 +40,15 @@ function App() {
         </div>
       </section>
       <section className='flex justify-center'>
+        <Element name='aboutuscontainer' />
         <AboutUsContainer className="mx-auto" />
       </section>
       {/* <section className='flex justify-center'>
         <BrandsContainer images={images} />
       </section> */}
       <section className='flex justify-center'>
+        <Element name='contactcontainer' />
+
         <BookTaxiSimpleContainer />
       </section>
       <section className='flex justify-center'>
@@ -55,12 +58,15 @@ function App() {
         <VideoContainer />
       </section>
       <section className='flex justify-center'>
+        <Element name='aboutcontainer' />
+
         <WhyChooseUsContainer />
       </section>
       <section className='flex justify-center'>
         <MockUpContainer />
       </section>
       <section>
+        <Element name='footer' />
         <FooterContainer />
       </section>
       <ScrollToTop />

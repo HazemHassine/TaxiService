@@ -2,11 +2,11 @@ import { Typography } from "@material-tailwind/react";
 import React from "react";
 import { scroller } from 'react-scroll';
 
-function ListItem(props) {
+function ListItemContact(props) {
 
   const handleClick = () => {
     console.log("Clicked");
-    scroller.scrollTo("bookingcontainer", {
+    scroller.scrollTo("contactcontainer", {
       duration: 500,
       delay: 30,
       offset: -130,
@@ -34,4 +34,4 @@ function ListItem(props) {
   );
 }
 
-export default ListItem;
+export default ListItemContact;
